@@ -130,4 +130,6 @@ const App = () => {
   );
 };
 
+console.log("Testing Git commit");
+
 export default App;
