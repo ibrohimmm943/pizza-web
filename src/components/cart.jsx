@@ -26,8 +26,7 @@ const Cart = ({ cart, updateQuantity, toggleCart, clearCart }) => {
       exit={{ opacity: 0, y: 50 }}
       transition={{ duration: 0.3 }}
       className="fixed z-50 p-6 bg-white shadow-lg w-full md:w-96 rounded-t-2xl md:rounded-lg
-                 bottom-0 left-0 right-0 
-                 md:bottom-auto md:top-20 md:right-4 md:left-auto"
+                 bottom-0 left-0 right-0 md:bottom-auto md:top-20 md:right-4 md:left-auto"
     >
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold text-black">Your Cart</h2>
@@ -136,6 +135,7 @@ const Cart = ({ cart, updateQuantity, toggleCart, clearCart }) => {
 };
 
 export default Cart;
+
 
 
 
