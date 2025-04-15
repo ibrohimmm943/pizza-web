@@ -21,11 +21,11 @@ const Cart = ({ cart, updateQuantity, toggleCart, clearCart }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -50 }}
+      initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -50 }}
+      exit={{ opacity: 0, y: 50 }}
       transition={{ duration: 0.3 }}
-      className="fixed top-16 right-0 w-full md:w-96 bg-white shadow-lg z-20 p-6 rounded-b-lg"
+      className="fixed inset-x-0 bottom-0 md:top-16 md:bottom-auto md:right-0 md:w-96 w-full bg-white shadow-lg z-50 p-6 rounded-t-2xl md:rounded-b-lg"
     >
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold text-black">Your Cart</h2>
@@ -98,7 +98,7 @@ const Cart = ({ cart, updateQuantity, toggleCart, clearCart }) => {
             isOpen={isModalOpen}
             onRequestClose={() => setIsModalOpen(false)}
             className="p-6 bg-white rounded-lg shadow-lg max-w-md mx-auto mt-20"
-            overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+            overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
           >
             <h2 className="text-xl font-bold mb-4">Order Confirmation</h2>
             <p>Thank you for your order!</p>
@@ -109,7 +109,7 @@ const Cart = ({ cart, updateQuantity, toggleCart, clearCart }) => {
                 setIsModalOpen(false);
                 clearCart();
                 setShowThankYou(true);
-                setTimeout(() => setShowThankYou(false), 3000); 
+                setTimeout(() => setShowThankYou(false), 3000);
               }}
               className="mt-4 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
             >
@@ -119,7 +119,6 @@ const Cart = ({ cart, updateQuantity, toggleCart, clearCart }) => {
         </div>
       )}
 
-      
       {showThankYou && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -135,4 +134,5 @@ const Cart = ({ cart, updateQuantity, toggleCart, clearCart }) => {
 };
 
 export default Cart;
+
 
