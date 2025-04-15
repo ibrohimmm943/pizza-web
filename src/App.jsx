@@ -19,7 +19,7 @@ import Soups from "./components/Soups";
 import Location from "./components/Location.jsx"; 
 import Loading from "./components/Loading.jsx";
 
-const App = () => {
+const App = () => { 
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
