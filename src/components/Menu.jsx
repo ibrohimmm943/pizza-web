@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import MenuCard from "../layouts/MenuCard";
 
-
 const Menu = ({ addToCart }) => {
   const menuData = [
     { id: 1, img: "/img/menu1.jpg", title: "Margarita Marvel", price: "16.99" },
@@ -19,9 +18,9 @@ const Menu = ({ addToCart }) => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -100 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen container mx-auto flex flex-col justify-center items-center py-10"
+      className="min-h-screen container mx-auto flex flex-col justify-center items-center pt-20"
     >
-      <h1 className="text-3xl font-bold text-black mb-6">Pasta</h1>
+      <h1 className="text-3xl font-bold text-black mb-6 mt-10">Pasta</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {menuData.map((item) => (
           <MenuCard

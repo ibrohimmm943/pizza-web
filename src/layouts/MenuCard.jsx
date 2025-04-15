@@ -3,8 +3,10 @@ import Button from "./Button";
 
 const MenuCard = ({ id, img, title, price, addToCart }) => {
   const handleOrder = () => {
-    addToCart({ id, title, price: parseFloat(price) });
+    addToCart({ id, img, title, price: parseFloat(price) });
   };
+
+
 
   return (
     <div className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">

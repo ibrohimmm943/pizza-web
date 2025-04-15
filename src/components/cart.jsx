@@ -5,11 +5,14 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
-const Cart = ({ cart, updateQuantity, toggleCart }) => {
+const Cart = ({ cart, updateQuantity, toggleCart, clearCart }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const calculateTotalPrice = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+    return cart
+      .reduce((total, item) => total + item.price * item.quantity, 0)
+      .toFixed(2);
   };
 
   const handleCheckout = () => {
@@ -44,12 +47,9 @@ const Cart = ({ cart, updateQuantity, toggleCart }) => {
             >
               <div className="flex items-center gap-3">
                 <img
-                  src={item.img || "https://via.placeholder.com/150"}
+                  src={item.img}
                   alt={item.title}
                   className="w-16 h-16 rounded-lg object-cover"
-                  onError={(e) => {
-                    e.target.src = "https://via.placeholder.com/150";
-                  }}
                 />
                 <div>
                   <h3 className="text-sm font-semibold text-black">
@@ -60,14 +60,18 @@ const Cart = ({ cart, updateQuantity, toggleCart }) => {
               </div>
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                  onClick={() =>
+                    updateQuantity(item.id, item.quantity - 1)
+                  }
                   className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors duration-300"
                 >
                   -
                 </button>
                 <span>{item.quantity}</span>
                 <button
-                  onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                  onClick={() =>
+                    updateQuantity(item.id, item.quantity + 1)
+                  }
                   className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors duration-300"
                 >
                   +
@@ -101,7 +105,12 @@ const Cart = ({ cart, updateQuantity, toggleCart }) => {
             <p>Total Amount: ${calculateTotalPrice()}</p>
             <p>Your order has been placed successfully.</p>
             <button
-              onClick={() => setIsModalOpen(false)}
+              onClick={() => {
+                setIsModalOpen(false);
+                clearCart();
+                setShowThankYou(true);
+                setTimeout(() => setShowThankYou(false), 3000); 
+              }}
               className="mt-4 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
             >
               Close
@@ -109,8 +118,21 @@ const Cart = ({ cart, updateQuantity, toggleCart }) => {
           </Modal>
         </div>
       )}
+
+      
+      {showThankYou && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          className="mt-4 text-center text-green-600 font-semibold"
+        >
+          Thanks for your purchase!
+        </motion.div>
+      )}
     </motion.div>
   );
 };
 
 export default Cart;
+

@@ -41,24 +41,10 @@ const App = () => {
             : cartItem
         )
       );
-      toast.success(`${item.title} quantity updated in cart!`, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      toast.success(`${item.title} quantity updated in cart!`);
     } else {
       setCart([...cart, { ...item, quantity: 1 }]);
-      toast.success(`${item.title} added to cart!`, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      toast.success(`${item.title} added to cart!`);
     }
   };
 
@@ -66,34 +52,22 @@ const App = () => {
     if (newQuantity <= 0) {
       const removedItem = cart.find((item) => item.id === id);
       setCart(cart.filter((item) => item.id !== id));
-      toast.warn(`${removedItem.title} removed from cart!`, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      toast.warn(`${removedItem.title} removed from cart!`);
     } else {
       setCart(
         cart.map((item) =>
           item.id === id ? { ...item, quantity: newQuantity } : item
         )
       );
-      toast.info(`Quantity updated!`, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      toast.info(`Quantity updated!`);
     }
   };
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
   };
+
+  const clearCart = () => setCart([]); 
 
   return (
     <Router>
@@ -104,7 +78,12 @@ const App = () => {
           <>
             <Navbar toggleCart={toggleCart} cart={cart} />
             {isCartOpen && (
-              <Cart cart={cart} updateQuantity={updateQuantity} toggleCart={toggleCart} />
+              <Cart
+                cart={cart}
+                updateQuantity={updateQuantity}
+                toggleCart={toggleCart}
+                clearCart={clearCart} 
+              />
             )}
             <AnimatePresence mode="wait">
               <Routes>
@@ -129,7 +108,5 @@ const App = () => {
     </Router>
   );
 };
-
-console.log("Testing Git commit");
 
 export default App;
