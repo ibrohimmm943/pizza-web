@@ -116,9 +116,9 @@ const Navbar = ({ toggleCart, cart }) => {
         </div>
       </motion.div>
 
-      {/* 📱 Mobile fixed Cart button */}
+      {/* 📱 Mobile fixed Cart button - sal tepada */}
       {cart && (
-        <div className="md:hidden fixed bottom-4 right-4 z-20">
+        <div className="md:hidden fixed bottom-16 right-4 z-20">
           <button
             onClick={toggleCart}
             className="bg-yellow-500 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2"
@@ -137,3 +137,4 @@ const Navbar = ({ toggleCart, cart }) => {
 };
 
 export default Navbar;
+
