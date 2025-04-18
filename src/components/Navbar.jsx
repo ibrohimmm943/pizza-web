@@ -37,94 +37,28 @@ const Navbar = ({ toggleCart, cart }) => {
             <FaMapMarkerAlt className="text-yellow-500" />
             <span>Uzbekistan</span>
           </div>
-          <motion.div whileHover="hover" variants={linkVariants}>
-            <Link
-              to="/"
-              className="relative cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-yellow-500 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Home
-            </Link>
-          </motion.div>
-          <motion.div whileHover="hover" variants={linkVariants}>
-            <Link
-              to="/speciality"
-              className="relative cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-yellow-500 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Speciality
-            </Link>
-          </motion.div>
-          <motion.div whileHover="hover" variants={linkVariants}>
-            <Link
-              to="/dessert"
-              className="relative cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-yellow-500 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Dessert
-            </Link>
-          </motion.div>
-          <motion.div whileHover="hover" variants={linkVariants}>
-            <Link
-              to="/antipasta"
-              className="relative cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-yellow-500 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Antipasta
-            </Link>
-          </motion.div>
-          <motion.div whileHover="hover" variants={linkVariants}>
-            <Link
-              to="/combo"
-              className="relative cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-yellow-500 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Combo
-            </Link>
-          </motion.div>
-          <motion.div whileHover="hover" variants={linkVariants}>
-            <Link
-              to="/soups"
-              className="relative cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-yellow-500 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Soups
-            </Link>
-          </motion.div>
-          <motion.div whileHover="hover" variants={linkVariants}>
-            <Link
-              to="/beverages"
-              className="relative cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-yellow-500 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Beverages
-            </Link>
-          </motion.div>
-          <motion.div whileHover="hover" variants={linkVariants}>
-            <Link
-              to="/about"
-              className="relative cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-yellow-500 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              About
-            </Link>
-          </motion.div>
-          <motion.div whileHover="hover" variants={linkVariants}>
-            <Link
-              to="/menu"
-              className="relative cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-yellow-500 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Menu
-            </Link>
-          </motion.div>
-          <motion.div whileHover="hover" variants={linkVariants}>
-            <Link
-              to="/review"
-              className="relative cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-yellow-500 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Review
-            </Link>
-          </motion.div>
-          <motion.div whileHover="hover" variants={linkVariants}>
-            <Link
-              to="/location"
-              className="relative cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-yellow-500 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Location
-            </Link>
-          </motion.div>
+          {[
+            { to: "/", label: "Home" },
+            { to: "/speciality", label: "Speciality" },
+            { to: "/dessert", label: "Dessert" },
+            { to: "/antipasta", label: "Antipasta" },
+            { to: "/combo", label: "Combo" },
+            { to: "/soups", label: "Soups" },
+            { to: "/beverages", label: "Beverages" },
+            { to: "/about", label: "About" },
+            { to: "/menu", label: "Menu" },
+            { to: "/review", label: "Review" },
+            { to: "/location", label: "Location" },
+          ].map((link, index) => (
+            <motion.div key={index} whileHover="hover" variants={linkVariants}>
+              <Link
+                to={link.to}
+                className="relative cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-yellow-500 after:transition-all after:duration-300 hover:after:w-full"
+              >
+                {link.label}
+              </Link>
+            </motion.div>
+          ))}
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
@@ -148,93 +82,56 @@ const Navbar = ({ toggleCart, cart }) => {
         </div>
       </nav>
 
+      {/* Mobile Menu */}
       <motion.div
         initial={{ x: "-100%" }}
         animate={{ x: menu ? 0 : "-100%" }}
         transition={{ duration: 0.3 }}
         className="md:hidden flex flex-col absolute bg-white left-0 top-16 font-medium text-lg text-center pt-8 pb-4 gap-4 w-full h-fit"
       >
-        <Link
-          to="/"
-          className="cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out"
-          onClick={closeMenu}
-        >
-          Home
-        </Link>
-        <Link
-          to="/speciality"
-          className="cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out"
-          onClick={closeMenu}
-        >
-          Speciality
-        </Link>
-        <Link
-          to="/dessert"
-          className="cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out"
-          onClick={closeMenu}
-        >
-          Dessert
-        </Link>
-        <Link
-          to="/antipasta"
-          className="cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out"
-          onClick={closeMenu}
-        >
-          Antipasta
-        </Link>
-        <Link
-          to="/combo"
-          className="cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out"
-          onClick={closeMenu}
-        >
-          Combo
-        </Link>
-        <Link
-          to="/soups"
-          className="cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out"
-          onClick={closeMenu}
-        >
-          Soups
-        </Link>
-        <Link
-          to="/beverages"
-          className="cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out"
-          onClick={closeMenu}
-        >
-          Beverages
-        </Link>
-        <Link
-          to="/about"
-          className="cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out"
-          onClick={closeMenu}
-        >
-          About
-        </Link>
-        <Link
-          to="/menu"
-          className="cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out"
-          onClick={closeMenu}
-        >
-          Menu
-        </Link>
-        <Link
-          to="/review"
-          className="cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out"
-          onClick={closeMenu}
-        >
-          Review
-        </Link>
-        <Link
-          to="/location"
-          className="cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out"
-          onClick={closeMenu}
-        >
-          Location
-        </Link>
+        {[
+          { to: "/", label: "Home" },
+          { to: "/speciality", label: "Speciality" },
+          { to: "/dessert", label: "Dessert" },
+          { to: "/antipasta", label: "Antipasta" },
+          { to: "/combo", label: "Combo" },
+          { to: "/soups", label: "Soups" },
+          { to: "/beverages", label: "Beverages" },
+          { to: "/about", label: "About" },
+          { to: "/menu", label: "Menu" },
+          { to: "/review", label: "Review" },
+          { to: "/location", label: "Location" },
+        ].map((link, index) => (
+          <Link
+            key={index}
+            to={link.to}
+            className="cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out"
+            onClick={closeMenu}
+          >
+            {link.label}
+          </Link>
+        ))}
         <div className="flex justify-center items-center gap-4">
           <Button title="Sign Up" />
         </div>
       </motion.div>
+
+      {/* 📱 Mobile fixed Cart button */}
+      {cart && (
+        <div className="md:hidden fixed bottom-4 right-4 z-20">
+          <button
+            onClick={toggleCart}
+            className="bg-yellow-500 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2"
+          >
+            <FaShoppingCart />
+            {cart.length > 0 ? (
+              <span>{cart.length}</span>
+            ) : (
+              <span className="text-xs">No items</span>
+            )}
+          </button>
+        </div>
+      )}
     </header>
   );
 };
