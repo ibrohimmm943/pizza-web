@@ -116,7 +116,7 @@ const Navbar = ({ toggleCart, cart }) => {
         </div>
       </motion.div>
 
-      {/* 📱 Mobile fixed Cart button - sal tepada */}
+      
       {cart && (
         <div className="md:hidden fixed bottom-16 right-4 z-20">
           <button
@@ -135,6 +135,9 @@ const Navbar = ({ toggleCart, cart }) => {
     </header>
   );
 };
+
+console.log();
+
 
 export default Navbar;
 
